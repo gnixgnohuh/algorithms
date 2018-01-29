@@ -4,9 +4,9 @@ package sort;
  * @author: gnixgnohuh
  * @date : 18-1-4
  * @time : 下午4:05
- * @desc : 插入排序
+ * @desc : 插入排序1
  */
-public class Insertion extends Sorter {
+public class Insertion1 extends Sorter {
     public static void sort(Comparable[] a) {
         int len = a.length;
         //i左边的元素全部有序
@@ -20,6 +20,13 @@ public class Insertion extends Sorter {
         }
     }
 
+    /**
+     * 批量交换顺序
+     *
+     * @param a
+     * @param endIndex
+     * @param beginIndex
+     */
     protected static void exch(Comparable[] a, int endIndex, int beginIndex) {
         Comparable tmp = a[endIndex];
         for (int i = endIndex; i > beginIndex; i--) {
