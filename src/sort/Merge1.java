@@ -2,12 +2,11 @@ package sort;
 
 /**
  * @author: gnixgnohuh
- * @date : 18-1-26
- * @time : 上午10:56
- * @desc :
+ * @date : 18-1-30
+ * @time : 上午10:22
+ * @desc : 自底向上的归并
  */
-public class Merge extends Sorter {
-
+public class Merge1 extends Sorter {
     private static Comparable[] aux;
 
     /**
@@ -38,18 +37,14 @@ public class Merge extends Sorter {
     }
 
     public static void sort(Comparable[] a) {
-        aux = new Comparable[a.length];
-        sort(a, 0, a.length - 1);
-    }
+        int l = a.length;
 
-    private static void sort(Comparable[] a, int lo, int hi) {
-        if (lo >= hi) {
-            return;
+        aux = new Comparable[l];
+        for (int sz = 1; sz < l; sz *= 2) {
+            for (int lo = 0; lo < l - sz; lo += sz + sz) {
+                merge(a, lo, lo + sz - 1, Math.min(lo + sz + sz - 1, l - 1));
+            }
         }
-        int mid = lo + (hi - lo) / 2;
-        sort(a, lo, mid);
-        sort(a, mid + 1, hi);
-        merge(a, lo, mid, hi);
     }
 
     public static void main(String[] args) {
